@@ -8,4 +8,37 @@
 body {
   font-family: sans-serif;
 }
+
+body .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .wrapper .board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[3];
+      grid-template-columns: repeat(3, 100px);
+  -ms-grid-rows: (100px)[3];
+      grid-template-rows: repeat(3, 100px);
+  grid-gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  background-color: #263238;
+}
+
+body .wrapper .board .board-item {
+  background-color: #485459;
+  border-radius: 5px;
+  border: 2px solid #000;
+}
 /*# sourceMappingURL=styles.css.map */
