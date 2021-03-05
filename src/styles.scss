@@ -26,10 +26,41 @@ body {
                 border-radius: 5px;
                 border: 2px solid #000;
                 transition: all .1s linear;
+                position: relative;
             }
             .board-item:hover {
                 background-color: #515b60;
                 cursor: pointer;
+            }
+
+            .board-item-X::before, .board-item-X::after {
+                position: absolute;
+                content: "";
+                height: 5px;
+                width: 100%;
+                top: 50%;
+                left: 0;
+                background-color: red;
+            }
+
+            .board-item-X::before {
+                transform: translateY(-50%) rotate(-45deg);
+            }
+
+            .board-item-X::after {
+                transform: translateY(-50%) rotate(45deg);
+            }
+
+            .board-item-O::before {
+                position: absolute;
+                content: "";
+                border-radius: 50%;
+                border: 5px solid blue;
+                top: 50%;
+                left: 50%;
+                width: 80%;
+                height: 80%;
+                transform: translate(-50%, -50%);
             }
         }
         .reset-button {
