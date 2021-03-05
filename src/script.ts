@@ -13,7 +13,20 @@ const winningConditions: Array<number[]> = [
     [2, 5, 8],
     [0, 4, 8],
     [6, 4, 2]
-]
+];
+
+const validateGame = (): void => {
+    for(let i: number = 0; i <= 7; i++) {
+        const [posA, posB, posC]: number[] = winningConditions[i];
+        const value1: string = fields[posA];
+        const value2: string = fields[posB];
+        const value3: string = fields[posC];
+
+        if(value1 !== "" && value1 === value2 && value1 === value3) {
+            alert("win!");
+        }
+    }
+}
 
 fieldsElements.forEach((field) => {
     field.addEventListener('click', (e) => {
@@ -25,6 +38,7 @@ fieldsElements.forEach((field) => {
             if(fields[pos] === ""){
                 fields[pos] = activePlayer;
                 target.classList.add(`board-item-${activePlayer}`);
+                validateGame();
                 activePlayer = activePlayer === 'X' ? 'O' : 'X';
             }
         })
