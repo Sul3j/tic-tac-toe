@@ -1,6 +1,8 @@
 var fieldsElements = document.querySelectorAll('.board-item');
+var panel = document.querySelector('.panel');
 var fields = ['', '', '', '', '', '', '', '', ''];
 var activePlayer = 'X';
+var gameActive = true;
 var winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -18,7 +20,8 @@ var validateGame = function () {
         var value2 = fields[posB];
         var value3 = fields[posC];
         if (value1 !== "" && value1 === value2 && value1 === value3) {
-            alert("win!");
+            gameActive = false;
+            panel.innerText = "Wygrałeś!!!";
         }
     }
 };
@@ -27,7 +30,7 @@ fieldsElements.forEach(function (field) {
         var target = e.target;
         var pos = target.dataset.pos;
         console.log(pos);
-        if (fields[pos] === "") {
+        if (gameActive && fields[pos] === "") {
             fields[pos] = activePlayer;
             target.classList.add("board-item-" + activePlayer);
             validateGame();

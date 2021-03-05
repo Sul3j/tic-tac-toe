@@ -1,8 +1,12 @@
 const fieldsElements: NodeListOf<Element> = document.querySelectorAll('.board-item');
 
+const panel: HTMLParagraphElement = document.querySelector('.panel'); 
+
 const fields: string[] = ['','','','','','','','','']
 
 let activePlayer: string = 'X';
+
+let gameActive: boolean = true;
 
 const winningConditions: Array<number[]> = [
     [0, 1, 2],
@@ -23,7 +27,8 @@ const validateGame = (): void => {
         const value3: string = fields[posC];
 
         if(value1 !== "" && value1 === value2 && value1 === value3) {
-            alert("win!");
+            gameActive = false;
+            panel.innerText = "Wygrałeś!!!";
         }
     }
 }
@@ -35,7 +40,7 @@ fieldsElements.forEach((field) => {
             const {pos}: any = target.dataset;
             console.log(pos);
 
-            if(fields[pos] === ""){
+            if(gameActive && fields[pos] === ""){
                 fields[pos] = activePlayer;
                 target.classList.add(`board-item-${activePlayer}`);
                 validateGame();
