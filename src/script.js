@@ -1,8 +1,15 @@
-var fields = document.querySelectorAll('.board-item');
+var fieldsElements = document.querySelectorAll('.board-item');
+var fields = ['', '', '', '', '', '', '', '', ''];
 var activePlayer = 'X';
-fields.forEach(function (field) {
+fieldsElements.forEach(function (field) {
     field.addEventListener('click', function (e) {
-        e.target.classList.add("board-item-" + activePlayer);
-        activePlayer = activePlayer === 'X' ? 'O' : 'X';
+        var target = e.target;
+        var pos = target.dataset.pos;
+        console.log(pos);
+        if (fields[pos] === "") {
+            fields[pos] = activePlayer;
+            target.classList.add("board-item-" + activePlayer);
+            activePlayer = activePlayer === 'X' ? 'O' : 'X';
+        }
     });
 });
