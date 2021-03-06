@@ -19,6 +19,10 @@ const winningConditions: Array<number[]> = [
     [6, 4, 2]
 ];
 
+const displayWinMessage = () => {
+    panel.innerText = `Gratulacje ${activePlayer}, wygrałeś!`;
+}
+
 const validateGame = (): void => {
     for(let i: number = 0; i <= 7; i++) {
         const [posA, posB, posC]: number[] = winningConditions[i];
@@ -28,7 +32,7 @@ const validateGame = (): void => {
 
         if(value1 !== "" && value1 === value2 && value1 === value3) {
             gameActive = false;
-            panel.innerText = "Wygrałeś!!!";
+            displayWinMessage();
         }
     }
 }

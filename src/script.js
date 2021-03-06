@@ -13,6 +13,9 @@ var winningConditions = [
     [0, 4, 8],
     [6, 4, 2]
 ];
+var displayWinMessage = function () {
+    panel.innerText = "Gratulacje " + activePlayer + ", wygra\u0142e\u015B!";
+};
 var validateGame = function () {
     for (var i = 0; i <= 7; i++) {
         var _a = winningConditions[i], posA = _a[0], posB = _a[1], posC = _a[2];
@@ -21,7 +24,7 @@ var validateGame = function () {
         var value3 = fields[posC];
         if (value1 !== "" && value1 === value2 && value1 === value3) {
             gameActive = false;
-            panel.innerText = "Wygrałeś!!!";
+            displayWinMessage();
         }
     }
 };
