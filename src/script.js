@@ -26,17 +26,32 @@ var winningConditions = [
 var displayWinMessage = function () {
     panel.innerText = "Gratulacje " + activePlayer + ", wygra\u0142e\u015B!";
 };
+var displayTieMessage = function () {
+    panel.innerText = "Remis!";
+};
 var validateGame = function () {
+    var gameWon = false;
     for (var i = 0; i <= 7; i++) {
         var _a = winningConditions[i], posA = _a[0], posB = _a[1], posC = _a[2];
         var value1 = fields[posA];
         var value2 = fields[posB];
         var value3 = fields[posC];
         if (value1 !== "" && value1 === value2 && value1 === value3) {
+            gameWon = true;
+            break;
+        }
+        if (gameWon) {
             gameActive = false;
             displayWinMessage();
         }
+        else if (isBoardFull()) {
+            gameActive = false;
+            displayTieMessage();
+        }
     }
+};
+var isBoardFull = function () {
+    return fields.find(function (field) { return field === ''; }) === undefined;
 };
 fieldsElements.forEach(function (field) {
     field.addEventListener('click', function (e) {
