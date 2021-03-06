@@ -9,6 +9,9 @@ var setDefaults = function () {
     activePlayer = 'X';
     gameActive = true;
 };
+var clearMessage = function () {
+    panel.innerText = '';
+};
 setDefaults();
 var winningConditions = [
     [0, 1, 2],
@@ -53,5 +56,6 @@ var handleButtonClick = function () {
     fieldsElements.forEach(function (field) {
         field.classList.remove("board-item-X", "board-item-O");
     });
+    clearMessage();
 };
 resetButton.addEventListener('click', handleButtonClick);

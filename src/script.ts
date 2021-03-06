@@ -12,6 +12,10 @@ const setDefaults = (): void => {
     gameActive = true;
 } 
 
+const clearMessage = (): void => {
+    panel.innerText = '';
+}
+
 setDefaults();
 
 const winningConditions: Array<number[]> = [
@@ -64,6 +68,7 @@ const handleButtonClick = (): void => {
     fieldsElements.forEach(field => {
         field.classList.remove("board-item-X", "board-item-O");
     })
+    clearMessage();
 };
 
 resetButton.addEventListener('click', handleButtonClick);
