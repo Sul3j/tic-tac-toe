@@ -51,11 +51,14 @@ fieldsElements.forEach(function (field) {
         }
     });
 });
-var handleButtonClick = function () {
-    setDefaults();
+var resetBoardClasses = function () {
     fieldsElements.forEach(function (field) {
         field.classList.remove("board-item-X", "board-item-O");
     });
+};
+var handleButtonClick = function () {
+    setDefaults();
+    resetBoardClasses();
     clearMessage();
 };
 resetButton.addEventListener('click', handleButtonClick);

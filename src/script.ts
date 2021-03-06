@@ -63,11 +63,15 @@ fieldsElements.forEach((field): void => {
         })
 })
 
-const handleButtonClick = (): void => {
-    setDefaults();
+const resetBoardClasses = (): void => {
     fieldsElements.forEach(field => {
         field.classList.remove("board-item-X", "board-item-O");
     })
+} 
+
+const handleButtonClick = (): void => {
+    setDefaults();
+    resetBoardClasses();
     clearMessage();
 };
 
