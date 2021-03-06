@@ -1,8 +1,15 @@
 var fieldsElements = document.querySelectorAll('.board-item');
 var panel = document.querySelector('.panel');
-var fields = ['', '', '', '', '', '', '', '', ''];
-var activePlayer = 'X';
-var gameActive = true;
+var resetButton = document.querySelector('.reset-button');
+var fields;
+var activePlayer;
+var gameActive;
+var setDefaults = function () {
+    fields = ['', '', '', '', '', '', '', '', ''];
+    activePlayer = 'X';
+    gameActive = true;
+};
+setDefaults();
 var winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -41,3 +48,10 @@ fieldsElements.forEach(function (field) {
         }
     });
 });
+var handleButtonClick = function () {
+    setDefaults();
+    fieldsElements.forEach(function (field) {
+        field.classList.remove("board-item-X", "board-item-O");
+    });
+};
+resetButton.addEventListener('click', handleButtonClick);

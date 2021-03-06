@@ -1,12 +1,18 @@
 const fieldsElements: NodeListOf<Element> = document.querySelectorAll('.board-item');
-
 const panel: HTMLParagraphElement = document.querySelector('.panel'); 
+const resetButton: HTMLButtonElement = document.querySelector('.reset-button');
 
-const fields: string[] = ['','','','','','','','','']
+let fields: string[];
+let activePlayer: string;
+let gameActive: boolean;
 
-let activePlayer: string = 'X';
+const setDefaults = (): void => {
+    fields = ['','','','','','','','',''];
+    activePlayer = 'X';
+    gameActive = true;
+} 
 
-let gameActive: boolean = true;
+setDefaults();
 
 const winningConditions: Array<number[]> = [
     [0, 1, 2],
@@ -19,7 +25,7 @@ const winningConditions: Array<number[]> = [
     [6, 4, 2]
 ];
 
-const displayWinMessage = () => {
+const displayWinMessage = (): void => {
     panel.innerText = `Gratulacje ${activePlayer}, wygrałeś!`;
 }
 
@@ -37,7 +43,7 @@ const validateGame = (): void => {
     }
 }
 
-fieldsElements.forEach((field) => {
+fieldsElements.forEach((field): void => {
     field.addEventListener('click', (e) => {
 
             const target = e.target as HTMLElement;
@@ -52,3 +58,12 @@ fieldsElements.forEach((field) => {
             }
         })
 })
+
+const handleButtonClick = (): void => {
+    setDefaults();
+    fieldsElements.forEach(field => {
+        field.classList.remove("board-item-X", "board-item-O");
+    })
+};
+
+resetButton.addEventListener('click', handleButtonClick);
